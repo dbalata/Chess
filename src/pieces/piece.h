@@ -23,6 +23,11 @@ public:
 		return character;
 	}
 
+	virtual void move() 
+	{
+		firstMove = false;
+	}
+
 	virtual std::vector<Pair<int> > getValidMoves(int x, int y) = 0;
 
 protected:
@@ -31,9 +36,15 @@ protected:
 		character = c;
 	}	
 
+	bool isFirstMove()
+	{
+		return firstMove;
+	}
+
 private:
 	Color color;
 	char character;
+	bool firstMove;
 };
 
 #endif

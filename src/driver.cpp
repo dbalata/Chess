@@ -1,15 +1,14 @@
 #include <iostream>
 #include <stdio.h>
-#include "pawn.h"
+#include "pieces.h"
 #include "piece.h"
+#include "board.h"
 
 int main()
 {
-	Pawn pc(black);
+	Board *b = new Board();
 
-	Piece *pce = &pc;
-	
-	std::cout << pce->getChar() << std::endl;
+	b->print();
 	
 	std::cout << "Press enter to exit.";
 	getchar();
