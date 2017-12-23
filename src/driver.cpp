@@ -1,10 +1,17 @@
 #include <iostream>
-#include "pieces/pawn.h"
-#include "pieces/piece.h"
-//#include "color.h"
+#include <stdio.h>
+#include "pawn.h"
+#include "piece.h"
 
 int main()
 {
-	Pawn p(black);
+	Pawn pc(black);
+
+	Piece *pce = &pc;
+	
+	std::cout << pce->getChar() << std::endl;
+	
+	std::cout << "Press enter to exit.";
+	getchar();
 	return 0;
 }
