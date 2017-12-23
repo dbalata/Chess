@@ -23,7 +23,7 @@ public:
 
 	Piece* getPieceAt(int x, int y)
 	{
-		return grid[x][y];
+		return grid[y][x];
 	}
 };
 
