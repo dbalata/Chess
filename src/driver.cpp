@@ -4,6 +4,8 @@
 #include "piece.h"
 #include "board.h"
 #include "pair.h"
+#include <string>
+#include <vector>
 
 Pair<int> getInput(std::string s)
 {
@@ -11,6 +13,18 @@ Pair<int> getInput(std::string s)
 	x = s.at(0) - '0';
 	y = s.at(2) - '0';
 	return Pair<int>(x, y);
+}
+
+
+std::string movesToString(std::vector<Pair<int> > vec)
+{
+	char cs[100];
+	int idx = 0;
+	for(Pair<int> p : vec)
+	{
+		
+	}
+	return std::string(cs);
 }
 
 int main()
@@ -28,6 +42,8 @@ int main()
 		int y = p.snd;
 		Piece *pce = b->getPieceAt(x, y);
 		std::cout << "Selected type: " << pce->getChar() << std::endl;
+		std::vector<Pair<int> > moves = pce->getValidMoves(x, y);
+		//std::cout << "Availiable moves: " << movesToString(moves);
 	}
 	
 	std::cout << "Press enter to exit.";

@@ -3,13 +3,15 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-const int WIDTH = 8;
-const int HEIGHT = 8;
+namespace BoardDim
+{
+	const int WIDTH = 8;
+	const int HEIGHT = 8;
+}
 
 class Board
 {
-
-	Piece* grid[WIDTH][HEIGHT];
+	Piece* grid[BoardDim::WIDTH][BoardDim::HEIGHT];
 
 public:
 	Board();
@@ -18,13 +20,16 @@ public:
 
 	bool isWithinBounds(int x, int y)
 	{
-		return x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT;
+		return x >= 0 && x < BoardDim::WIDTH && y >= 0 && y < BoardDim::HEIGHT;
 	}
 
 	Piece* getPieceAt(int x, int y)
 	{
 		return grid[y][x];
 	}
+
+private:
+	void placePieces();
 };
 
 #endif

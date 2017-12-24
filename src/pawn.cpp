@@ -15,7 +15,7 @@ Pawn::Pawn(Color c, Board *b)
 
 vector<Pair<int> > Pawn::getValidMoves(int x, int y)
 {
-	int yInc = (getColor() == white) ? -1 : 1;
+	int yInc = (getColor() == blue) ? -1 : 1;
 	int newY = y + yInc;
 	vector<Pair<int> > ls;
 	ls.push_back(Pair<int>(x, newY));

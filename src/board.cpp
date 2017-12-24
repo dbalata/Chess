@@ -5,28 +5,40 @@
 
 Board::Board()
 {
-	for(int i = 0; i < WIDTH; i++)
+	placePieces();
+}
+
+void Board::placePieces()
+{
+	for(int i = 0; i < BoardDim::WIDTH; i++)
 	{
-		for(int j = 0; j < HEIGHT; j++)
+		for(int j = 0; j < BoardDim::HEIGHT; j++)
 		{
 			grid[i][j] = new EmptyTile();
 		}
 	}
 
-	for(int i = 0; i < WIDTH; i++)
+	for(int i = 0; i < BoardDim::WIDTH; i++)
 	{
-		grid[1][i] = new Pawn(white, this);
-		grid[HEIGHT - 2][i] = new Pawn(black, this);
+		grid[1][i] = new Pawn(blue, this);
+		grid[BoardDim::HEIGHT - 2][i] = new Pawn(red, this);
 	}
+
+	grid[0]						[0] 					= new Rook(blue, this);
+	grid[0]						[BoardDim::WIDTH - 1] 	= new Rook(blue, this);
+	grid[BoardDim::HEIGHT - 1]	[0] 					= new Rook(red, this);
+	grid[BoardDim::HEIGHT - 1]	[BoardDim::WIDTH - 1] 	= new Rook(red, this);	
 }
 
 void Board::print()
 {
 	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 
+	SetConsoleTextAttribute(console, 0x70);
+
 	std::cout << "  ";
 
-	for(int i = 0; i < WIDTH; i++)
+	for(int i = 0; i < BoardDim::WIDTH; i++)
 	{
 		std::cout << i;
 		std::cout << ' ';
@@ -34,18 +46,18 @@ void Board::print()
 
 	std::cout << std::endl;
 
-	for(int i = 0; i < WIDTH; i++)
+	for(int i = 0; i < BoardDim::WIDTH; i++)
 	{
 		std::cout << i;
 		std::cout << ' ';
-		for(int j = 0; j < HEIGHT; j++)
+		for(int j = 0; j < BoardDim::HEIGHT; j++)
 		{
 			char c = grid[i][j]->getChar();
-			if(c == 'x') SetConsoleTextAttribute(console, 8);
-			else if(grid[i][j]->getColor() == white) SetConsoleTextAttribute(console, 1);
-			else if(grid[i][j]->getColor() == black) SetConsoleTextAttribute(console, 4);
+			if(c == 'x') SetConsoleTextAttribute(console, 8 | 0x70);
+			else if(grid[i][j]->getColor() == blue) SetConsoleTextAttribute(console, 0x1 | 0x70);
+			else if(grid[i][j]->getColor() == red) SetConsoleTextAttribute(console, 0x4 | 0x70);
 			std::cout << c;
-			SetConsoleTextAttribute(console, 15);
+			SetConsoleTextAttribute(console, 0x70);
 			std::cout << ' ';
 		}
 		std::cout << std::endl;
