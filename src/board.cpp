@@ -1,11 +1,18 @@
 #include "board.h"
-#include "pieces.h"
+#include "pieces/pieces.h"
 #include <iostream>
 #include <windows.h>
 
 Board::Board()
 {
 	placePieces();
+}
+
+void Board::movePiece(Pair<int> init, Pair<int> dest)
+{
+	Piece *p = getPieceAt(init.fst, init.snd);
+	placePiece(init.fst, init.snd, new EmptyTile());
+	placePiece(dest.fst, dest.snd, p);
 }
 
 void Board::placePieces()

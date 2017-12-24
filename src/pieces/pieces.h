@@ -3,8 +3,8 @@
 
 #include <vector>
 #include "piece.h"
-#include "pair.h"
-#include "board.h"
+#include "../pair.h"
+#include "../board.h"
 
 class EmptyTile : public Piece
 {

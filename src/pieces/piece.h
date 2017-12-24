@@ -1,9 +1,9 @@
 #ifndef PIECE_H
 #define PIECE_H
 
-#include "color.h"
+#include "../color.h"
 #include <vector>
-#include "pair.h"
+#include "../pair.h"
 
 class Piece
 {

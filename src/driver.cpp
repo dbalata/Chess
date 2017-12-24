@@ -1,11 +1,12 @@
 #include <iostream>
 #include <stdio.h>
-#include "pieces.h"
-#include "piece.h"
+#include "pieces/pieces.h"
+#include "pieces/piece.h"
 #include "board.h"
 #include "pair.h"
 #include <string>
 #include <vector>
+#include <sstream>
 
 Pair<int> getInput(std::string s)
 {
@@ -15,19 +16,18 @@ Pair<int> getInput(std::string s)
 	return Pair<int>(x, y);
 }
 
-
 std::string movesToString(std::vector<Pair<int> > vec)
 {
-	char cs[100];
+	std::stringstream ss;
 	int idx = 0;
 	for(Pair<int> p : vec)
 	{
-		
+		ss << idx++ << ": (" << p.fst << ", " << p.snd << ")" << std::endl;
 	}
-	return std::string(cs);
+	return ss.str();
 }
 
-int main()
+int main(void)
 {
 	Board *b = new Board();
 
@@ -37,13 +37,24 @@ int main()
 		std::cout << "Select a piece." << std::endl;
 		std::string input;
 		std::getline(std::cin, input);
-		Pair<int> p = getInput(input);
-		int x = p.fst;
-		int y = p.snd;
+
+		if (input.size() != 3) continue;
+
+		Pair<int> pieceLoc = getInput(input);
+		int x = pieceLoc.fst;
+		int y = pieceLoc.snd;
 		Piece *pce = b->getPieceAt(x, y);
+
+		if (pce->getChar() == 'x') continue;
+
 		std::cout << "Selected type: " << pce->getChar() << std::endl;
 		std::vector<Pair<int> > moves = pce->getValidMoves(x, y);
-		//std::cout << "Availiable moves: " << movesToString(moves);
+		std::cout << "Availiable moves: " << std::endl << movesToString(moves) << std::endl;
+
+		int selection;
+		std::cin >> selection;
+		Pair<int> pieceMoveLoc = moves[selection];
+		b->movePiece(pieceLoc, pieceMoveLoc);
 	}
 	
 	std::cout << "Press enter to exit.";

@@ -21,10 +21,10 @@
     <ClCompile Include="driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pawn.cpp">
+    <ClCompile Include="pieces\pawn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="rook.cpp">
+    <ClCompile Include="pieces\rook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,13 +38,13 @@
     <ClInclude Include="pair.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pawn.h">
+    <ClInclude Include="pieces\pawn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="piece.h">
+    <ClInclude Include="pieces\piece.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pieces.h">
+    <ClInclude Include="pieces\pieces.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

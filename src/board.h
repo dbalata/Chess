@@ -1,4 +1,4 @@
-#include "piece.h"
+#include "pieces/piece.h"
 
 #ifndef BOARD_H
 #define BOARD_H
@@ -27,6 +27,13 @@ public:
 	{
 		return grid[y][x];
 	}
+
+	void placePiece(int x, int y, Piece *p)
+	{
+		grid[y][x] = p;
+	}
+
+	void movePiece(Pair<int> init, Pair<int> dest);
 
 private:
 	void placePieces();

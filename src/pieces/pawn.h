@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "piece.h"
-#include "pair.h" 
+#include "../pair.h" 
 
 class Pawn : public Piece
 {

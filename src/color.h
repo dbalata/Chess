@@ -1,8 +1,6 @@
-#ifndef COLOR_H
-#define COLOR_H
+#pragma once
 enum Color
 {
 	blue,
 	red
 };
-#endif
