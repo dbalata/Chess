@@ -53,7 +53,7 @@ void Board::print()
 		for(int j = 0; j < BoardDim::HEIGHT; j++)
 		{
 			char c = grid[i][j]->getChar();
-			if(c == 'x') SetConsoleTextAttribute(console, 8 | 0x70);
+			if(c == 'x') SetConsoleTextAttribute(console, 0x8 | 0x70);
 			else if(grid[i][j]->getColor() == blue) SetConsoleTextAttribute(console, 0x1 | 0x70);
 			else if(grid[i][j]->getColor() == red) SetConsoleTextAttribute(console, 0x4 | 0x70);
 			std::cout << c;
