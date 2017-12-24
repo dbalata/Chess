@@ -30,22 +30,31 @@ std::string movesToString(std::vector<Pair<int> > vec)
 int main(void)
 {
 	Board *b = new Board();
-
+	Color currentTurn = blue;
+	std::string colorStrings[] = { "blue", "red" };
 	while(true)
 	{
 		b->print();
+		std::cout << colorStrings[currentTurn] << "'s turn." << std::endl;
 		std::cout << "Select a piece." << std::endl;
 		std::string input;
-		std::getline(std::cin, input);
+		std::cin.clear();
 
-		if (input.size() != 3) continue;
+		while (input.size() != 3)
+		{
+			std::getline(std::cin, input);
+		}
 
 		Pair<int> pieceLoc = getInput(input);
 		int x = pieceLoc.fst;
 		int y = pieceLoc.snd;
 		Piece *pce = b->getPieceAt(x, y);
 
-		if (pce->getChar() == 'x') continue;
+		if (pce->getChar() == 'x' || pce->getColor() != currentTurn)
+		{
+			std::cout << "Invalid." << std::endl;
+			continue;
+		}
 
 		std::cout << "Selected type: " << pce->getChar() << std::endl;
 		std::vector<Pair<int> > moves = pce->getValidMoves(x, y);
@@ -55,6 +64,8 @@ int main(void)
 		std::cin >> selection;
 		Pair<int> pieceMoveLoc = moves[selection];
 		b->movePiece(pieceLoc, pieceMoveLoc);
+		currentTurn = (currentTurn == blue) ? red : blue;
+		pce->move();
 	}
 	
 	std::cout << "Press enter to exit.";

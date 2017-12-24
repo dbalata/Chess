@@ -19,15 +19,17 @@ vector<Pair<int> > Rook::getValidMoves(int x, int y)
 	Color c = getColor();
 	Color inv = (c == red) ? blue : red;
 
+	// For each cardinal direction, keep adding possible moves until a friend or enemy is encountered.
+	// If enemy, add that space as well.
 	for(int i = x + 1; i < BoardDim::WIDTH; i++)
 	{
 		if (board->getPieceAt(i, y)->getChar() == 'x') ls.push_back(Pair<int>(i, y));
-		else if (board->getPieceAt(i, y)->getColor() == inv)
+		else if (board->getPieceAt(i, y)->getColor() == inv) // enemy
 		{
 			ls.push_back(Pair<int>(i, y));
 			break;
 		}
-		else break;
+		else break; // friend
 	}
 
 	for (int i = x - 1; i >= 0; i--)

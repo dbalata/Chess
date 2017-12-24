@@ -18,14 +18,19 @@ public:
 
 	void print();
 
-	bool isWithinBounds(int x, int y)
+	bool isWithinBounds(Pair<int> p)
 	{
-		return x >= 0 && x < BoardDim::WIDTH && y >= 0 && y < BoardDim::HEIGHT;
+		return isWithinBounds(p.fst, p.snd);
 	}
 
 	Piece* getPieceAt(int x, int y)
 	{
 		return grid[y][x];
+	}
+
+	bool isWithinBounds(int x, int y)
+	{
+		return x >= 0 && x < BoardDim::WIDTH && y >= 0 && y < BoardDim::HEIGHT;
 	}
 
 	void placePiece(int x, int y, Piece *p)
