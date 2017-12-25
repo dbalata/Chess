@@ -101,6 +101,7 @@
     <ClCompile Include="board.cpp" />
     <ClCompile Include="driver.cpp" />
     <ClCompile Include="pieces\bishop.cpp" />
+    <ClCompile Include="pieces\king.cpp" />
     <ClCompile Include="pieces\knight.cpp" />
     <ClCompile Include="pieces\pawn.cpp" />
     <ClCompile Include="pieces\queen.cpp" />

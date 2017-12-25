@@ -8,11 +8,13 @@ Board::Board()
 	placePieces();
 }
 
-void Board::movePiece(Pair<int> init, Pair<int> dest)
+Color Board::movePiece(Pair<int> init, Pair<int> dest)
 {
-	Piece *p = getPieceAt(init.fst, init.snd);
+	Piece *p = getPieceAt(init);
 	placePiece(init.fst, init.snd, new EmptyTile());
 	placePiece(dest.fst, dest.snd, p);
+	if (getPieceAt(dest)->getChar() == 'K') return p->getColor();
+	return empty;
 }
 
 void Board::placePieces()
@@ -48,6 +50,9 @@ void Board::placePieces()
 
 	grid[0]						[3]						= new Queen(blue, this);
 	grid[BoardDim::HEIGHT - 1]	[BoardDim::WIDTH - 4]	= new Queen(red, this);
+
+	grid[0]						[4]						= new King(blue, this);
+	grid[BoardDim::HEIGHT - 1]	[BoardDim::WIDTH - 5]	= new King(red, this);
 }
 
 void Board::print()

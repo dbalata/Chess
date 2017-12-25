@@ -18,7 +18,7 @@ public:
 
 	void print();
 
-	void movePiece(Pair<int> init, Pair<int> dest);
+	Color movePiece(Pair<int> init, Pair<int> dest);
 
 	bool isValidMove(int x, int y, Color c)
 	{

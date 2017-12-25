@@ -58,12 +58,20 @@ int main(void)
 
 		std::cout << "Selected type: " << pce->getChar() << std::endl;
 		std::vector<Pair<int> > moves = pce->getValidMoves(x, y);
-		std::cout << "Availiable moves: " << std::endl << movesToString(moves) << std::endl;
+		std::cout << "Availiable moves: (-1 to choose a different piece)" << std::endl << movesToString(moves) << std::endl;
 
 		int selection;
 		std::cin >> selection;
+		if (selection == -1) continue;
 		Pair<int> pieceMoveLoc = moves[selection];
-		b->movePiece(pieceLoc, pieceMoveLoc);
+		Color result = b->movePiece(pieceLoc, pieceMoveLoc);
+
+		if (result != empty)
+		{
+			std::cout << result << "has won.";
+			break;
+		}
+
 		currentTurn = (currentTurn == blue) ? red : blue;
 		pce->move();
 	}

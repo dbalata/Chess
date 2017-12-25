@@ -36,6 +36,9 @@
     <ClCompile Include="pieces\queen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pieces\king.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.h">
