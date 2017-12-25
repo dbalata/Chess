@@ -2,5 +2,6 @@
 enum Color
 {
 	blue,
-	red
+	red,
+	empty
 };

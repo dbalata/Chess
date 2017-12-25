@@ -27,6 +27,15 @@
     <ClCompile Include="pieces\rook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pieces\knight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pieces\bishop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pieces\queen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.h">
@@ -36,9 +45,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="pair.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pieces\pawn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="pieces\piece.h">

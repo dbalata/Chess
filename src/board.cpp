@@ -35,6 +35,19 @@ void Board::placePieces()
 	grid[0]						[BoardDim::WIDTH - 1] 	= new Rook(blue, this);
 	grid[BoardDim::HEIGHT - 1]	[0] 					= new Rook(red, this);
 	grid[BoardDim::HEIGHT - 1]	[BoardDim::WIDTH - 1] 	= new Rook(red, this);	
+
+	grid[0]						[1]						= new Knight(blue, this);
+	grid[0]						[BoardDim::WIDTH - 2]	= new Knight(blue, this);
+	grid[BoardDim::HEIGHT - 1]	[1]						= new Knight(red, this);
+	grid[BoardDim::HEIGHT - 1]	[BoardDim::WIDTH - 2]	= new Knight(red, this);
+
+	grid[0]						[2]						= new Bishop(blue, this);
+	grid[0]						[BoardDim::WIDTH - 3]	= new Bishop(blue, this);
+	grid[BoardDim::HEIGHT - 1]	[2]						= new Bishop(red, this);
+	grid[BoardDim::HEIGHT - 1]	[BoardDim::WIDTH - 3]	= new Bishop(red, this);
+
+	grid[0]						[3]						= new Queen(blue, this);
+	grid[BoardDim::HEIGHT - 1]	[BoardDim::WIDTH - 4]	= new Queen(red, this);
 }
 
 void Board::print()

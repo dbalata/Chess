@@ -11,6 +11,7 @@ class EmptyTile : public Piece
 public:
 	EmptyTile()
 	{
+		setColor(empty);
 		setChar('x');
 	}
 	std::vector<Pair<int> > getValidMoves(int x, int y) { return std::vector<Pair<int> >(); };
@@ -34,29 +35,33 @@ public:
 
 class Knight : public Piece
 {
+	Board *board;
 public:
-	Knight(Color c);
+	Knight(Color c, Board *b);
 	std::vector<Pair<int> > getValidMoves(int x, int y);
 };
 
 class Bishop : public Piece
 {
+	Board *board;
 public:
-	Bishop(Color c);
+	Bishop(Color c, Board *b);
 	std::vector<Pair<int> > getValidMoves(int x, int y);
 };
 
 class King : public Piece
 {
+	Board *board;
 public:
-	King(Color c);
+	King(Color c, Board *b);
 	std::vector<Pair<int> > getValidMoves(int x, int y);
 };
 
 class Queen : public Piece
 {
+	Board *board;
 public:
-	Queen(Color c);
+	Queen(Color c, Board *b);
 	std::vector<Pair<int> > getValidMoves(int x, int y);
 };
 

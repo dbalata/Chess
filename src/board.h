@@ -18,9 +18,13 @@ public:
 
 	void print();
 
-	bool isWithinBounds(Pair<int> p)
+	void movePiece(Pair<int> init, Pair<int> dest);
+
+	bool isValidMove(int x, int y, Color c)
 	{
-		return isWithinBounds(p.fst, p.snd);
+		Color inv = (c == red) ? blue : red;
+		return isWithinBounds(x, y) && 
+			(getPieceAt(x, y)->getColor() == inv || getPieceAt(x, y)->getColor() == empty);
 	}
 
 	Piece* getPieceAt(int x, int y)
@@ -28,17 +32,26 @@ public:
 		return grid[y][x];
 	}
 
+	Piece* getPieceAt(Pair<int> p)
+	{
+		return getPieceAt(p.fst, p.snd);
+	}
+
 	bool isWithinBounds(int x, int y)
 	{
-		return x >= 0 && x < BoardDim::WIDTH && y >= 0 && y < BoardDim::HEIGHT;
+		bool b = x >= 0 && x < BoardDim::WIDTH && y >= 0 && y < BoardDim::HEIGHT;
+		return b;
+	}
+
+	bool isWithinBounds(Pair<int> p)
+	{
+		return isWithinBounds(p.fst, p.snd);
 	}
 
 	void placePiece(int x, int y, Piece *p)
 	{
 		grid[y][x] = p;
 	}
-
-	void movePiece(Pair<int> init, Pair<int> dest);
 
 private:
 	void placePieces();
